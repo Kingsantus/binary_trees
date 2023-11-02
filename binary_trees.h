@@ -3,15 +3,20 @@
 
 #include <stddef.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <math.h>
+#include <limits.h>
 
 /**
  * struct binary_tree_s - Binary tree node
- *
  * @n: Integer stored in the node
  * @parent: Pointer to the parent node
  * @left: Pointer to the left child node
  * @right: Pointer to the right child node
  */
+
 struct binary_tree_s
 {
 	int n;
@@ -27,6 +32,18 @@ typedef struct binary_tree_s bst_t;
 typedef struct binary_tree_s avl_t;
 /* Max Binary Heap */
 typedef struct binary_tree_s heap_t;
+
+/**
+ * struct levelorder_queue_s - Level order traversal queue.
+ * @node: A node of a binary tree.
+ * @next: The next node to traverse to in the binary tree.
+ */
+
+typedef struct levelorder_queue_s
+{
+	binary_tree_t *node;
+	struct levelorder_queue_s *next;
+} levelorder_queue_t;
 
 
 /* function prototype */
@@ -52,5 +69,17 @@ binary_tree_t *binary_tree_uncle(binary_tree_t *node);
 
 /* prototype to print tree */
 void binary_tree_print(const binary_tree_t *tree);
+
+/* helper functions */
+int _pow_recursion(int x, int y);
+binary_tree_t *bta_helper(binary_tree_t *root, const binary_tree_t *first,
+			  const binary_tree_t *second);
+void btlo_helper(const binary_tree_t *tree, void (*func)(int), size_t level);
+int btic_helper(const binary_tree_t *tree, size_t index, size_t size);
+int btib_helper(const binary_tree_t *tree, int low, int hi);
+bst_t *bst_min_val(bst_t *root);
+int btia_helper(const binary_tree_t *tree, int low, int hi);
+int btih_helper(const binary_tree_t *tree);
+void sata_helper(avl_t **root, int *array, size_t lo, size_t hi);
 
 #endif
